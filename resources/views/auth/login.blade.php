@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('titulo', 'Login')
 
@@ -68,4 +68,4 @@
         </div>
     </div>
 </div>
-@endsection
+@stop

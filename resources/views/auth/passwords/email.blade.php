@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 <!-- Main Content -->
 @section('contenido')
@@ -44,4 +44,4 @@
         </div>
     </div>
 </div>
-@endsection
+@stop

@@ -12,4 +12,4 @@
 	        <a class="btn btn-default" href="{{ route('home') }}">volver a la home</a>
         </div>
     </div>
-@endsection
+@stop

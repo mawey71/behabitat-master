@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('titulo', 'Contacto')
 
@@ -34,5 +34,5 @@
                 {!! Form::close() !!}
         </div>
     </div>
-@endsection
+@stop
 

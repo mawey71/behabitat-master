@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('contenido')
 <div class="container">
@@ -98,4 +98,4 @@
         </div>
     </div>
 </div>
-@endsection
+@stop
