@@ -1,6 +1,6 @@
 <?php
 
-namespace behabitat\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

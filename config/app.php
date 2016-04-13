@@ -151,10 +151,10 @@ return [
         /*
          * Application Service Providers...
          */
-        behabitat\Providers\AppServiceProvider::class,
-        behabitat\Providers\AuthServiceProvider::class,
-        behabitat\Providers\EventServiceProvider::class,
-        behabitat\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
         /*
          * Añadidos por mí...
          */

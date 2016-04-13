@@ -24,7 +24,7 @@
             "database"
         ],
         "psr-4": {
-            "behabitat\\": "app/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {
