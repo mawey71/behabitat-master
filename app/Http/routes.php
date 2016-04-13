@@ -10,10 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +28,38 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+
+    Route::get('/', [
+        'as'   => 'home',
+        'uses' => 'PagesController@home'
+    ]);
+
+    Route::get('/about', [
+        'as'   => 'about',
+        'uses' => 'PagesController@about'
+    ]);
+
+
+/*
+    
+    Route::get('/contacto', function() {
+		return redirect('/#contacto');
+	});
+*/
+	Route::get('/contacto', [
+    	'as'   => 'contacto',
+        'uses' => 'EmailController@mostrarForm'
+    ]);
+    Route::post('/contacto', 'EmailController@enviarEmail');
+
+
 });
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'PagesController@home');
+    Route::get('/admin/home', [
+        'as' => 'admin.home', 
+        'uses' => 'AdminController@home']);
 });
