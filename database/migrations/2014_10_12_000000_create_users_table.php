@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->boolean('es_admin')->default(false);
             $table->string('nombre');
             $table->string('apellido1');
-            $table->string('apellido2');
+            $table->string('apellido2')->nullable();
             $table->boolean('es_empresa')->default(false);
-            $table->string('nif');
+            $table->string('nif')->nullable();
             $table->string('razon_social')->nullable();
             $table->string('cif')->nullable();
             $table->string('direccion');
