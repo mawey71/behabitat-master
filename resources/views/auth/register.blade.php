@@ -68,9 +68,52 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">nombre</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="nombre" value="{{ old('nombre') }}">
+
+                                @if ($errors->has('nombre'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nombre') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('apellido1') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">primer apellido</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="apellido1" value="{{ old('apellido1') }}">
+
+                                @if ($errors->has('apellido1'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('apellido1') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('apellido2') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">segundo apellido</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="apellido2" value="{{ old('apellido2') }}">
+
+                                @if ($errors->has('apellido2'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('apellido2') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                {!! Form::radio('rol', 'cliente'); !!} Soy cliente
+                                {!! Form::radio('rol', 'cliente', true); !!} Soy cliente
                                 {!! Form::radio('rol', 'proveedor'); !!} Soy proveedor
                              </div>
                         </div>
@@ -80,6 +123,105 @@
                         <div class="form-group" id="div-proveedor">
                             <h1>proveedor</h1>
                         </div>
+
+                        <div class="form-group{{ $errors->has('nif') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">nif</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="nif" value="{{ old('nif') }}">
+
+                                @if ($errors->has('nif'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nif') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('razon_social') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">razón social</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="razon_social" value="{{ old('razon_social') }}">
+
+                                @if ($errors->has('razon_social'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('razon_social') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('cif') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">cif</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="cif" value="{{ old('cif') }}">
+
+                                @if ($errors->has('cif'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('cif') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('direccion') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">dirección</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="direccion" value="{{ old('direccion') }}">
+
+                                @if ($errors->has('direccion'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('direccion') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('localidad') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">localidad</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="localidad" value="{{ old('localidad') }}">
+
+                                @if ($errors->has('localidad'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('localidad') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('provincia') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">provincia</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="provincia" value="{{ old('provincia') }}">
+
+                                @if ($errors->has('provincia'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('provincia') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('codigo_postal') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">código postal</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="codigo_postal" value="{{ old('codigo_postal') }}">
+
+                                @if ($errors->has('codigo_postal'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('codigo_postal') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <!-->
                             En esta sección tengo que mostrar uno de dos div según la selección anterior
                             hay que hacerlo con JQuery

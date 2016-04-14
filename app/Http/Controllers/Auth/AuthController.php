@@ -54,6 +54,7 @@ class AuthController extends Controller
             'password'      => 'required|confirmed|min:4',
             'nombre'        => 'required|max:60',
             'apellido1'     => 'required|max:60',
+            'apellido2'     => 'max:60',
             'es_empresa'    => 'boolean',
             'nif'           => 'required_if:es_empresa,false|max:9',
             'razon_social'  => 'required_if:es_empresa,true|max:60',
