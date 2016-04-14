@@ -1,0 +1,4 @@
+ul.nav li.dropdown.open a.dropdown-toggle, ul.dropdown-menu li a:hover {
+    color: #fff;
+    background-color: #286090;
+}

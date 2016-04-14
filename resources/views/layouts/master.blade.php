@@ -24,7 +24,6 @@
         @include('layouts.partials.nav')
 
         @yield('contenido')
-        @show
         
         @include('layouts.partials.footer')
 
