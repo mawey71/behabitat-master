@@ -35,3 +35,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Activity::class, function (Faker\Generator $faker) {
+    $faker = Faker\Factory::create('es_ES');
+    return [
+        'nombre'      => $faker->word,
+        'descripcion' => $faker->sentence,
+    ];
+});
