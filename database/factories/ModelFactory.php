@@ -22,7 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'nombre' 	 	 => $faker->name,
         'apellido1' 	 => $faker->firstName,
         'apellido2' 	 => $faker->lastName,
-        'es_empresa' 	 => false,
+        'rol' 	         => 'cliente',
         'nif' 			 => $faker->unique()->randomNumber(8) . strtoupper($faker->randomLetter(1)),
         'razon_social' 	 => null,
         'cif' 			 => null,

@@ -86,6 +86,8 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
+    'nif_valido' => 'el nif no es válido',
+    'cif_valido' => 'el cif no es válido',
 
     'custom' => [
         'attribute-name' => [

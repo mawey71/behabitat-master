@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('nombre');
             $table->string('apellido1');
             $table->string('apellido2')->nullable();
-            $table->boolean('es_empresa')->default(false);
+            $table->enum('rol', ['cliente', 'proveedor'])->default('cliente');
             $table->string('nif')->nullable();
             $table->string('razon_social')->nullable();
             $table->string('cif')->nullable();

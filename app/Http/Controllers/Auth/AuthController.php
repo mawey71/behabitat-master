@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+include(app_path().'/includes/validarDocumento.php');
 
 class AuthController extends Controller
 {
@@ -48,21 +49,31 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
+        Validator::extend('nif_valido', function($attribute, $value, $parameters) {   
+            return (isValidNIF($value) || isValidNIE($value));
+        });
+
+        Validator::extend('cif_valido', function($attribute, $value, $parameters) {   
+            return isValidCIF($value);
+        });
+        
         return Validator::make($data, [
-            'username'      => 'required|max:255|unique:users',
-            'email'         => 'required|email|max:255|unique:users',
-            'password'      => 'required|confirmed|min:4',
-            'nombre'        => 'required|max:60',
-            'apellido1'     => 'required|max:60',
-            'apellido2'     => 'max:60',
-            'es_empresa'    => 'boolean',
-            'nif'           => 'required_if:es_empresa,false|max:9',
-            'razon_social'  => 'required_if:es_empresa,true|max:60',
-            'cif'           => 'required_if:es_empresa,true|max:9',
-            'direccion'     => 'required|max:60',
-            'localidad'     => 'required|max:60',
-            'provincia'     => 'required|max:60',
-            'codigo_postal' => 'required|numeric|max:5',
+            'username'       => 'required|max:255|unique:users',
+            'email'          => 'required|email|max:255|unique:users',
+            'password'       => 'required|confirmed|min:4',
+            'nombre'         => 'required|max:60',
+            'apellido1'      => 'required|max:60',
+            'apellido2'      => 'sometimes|max:60',
+            'rol'            => 'required',
+            'nif'            => 'nif_valido|required_if:rol,cliente|max:9',
+            'razon_social'   => 'required_if:rol,proveedor|max:60',
+            'cif'            => 'cif_valido|required_if:rol,proveedor|max:9',
+            'direccion'      => 'required|max:60',
+            'localidad'      => 'required|max:60',
+            'provincia'      => 'required|max:60',
+            'codigo_postal'  => 'required|numeric|digits:5',
+            'telefono'       => 'sometimes|numeric',
+            'telefono_movil' => 'sometimes|numeric',
         ]);
     }
 
@@ -83,7 +94,7 @@ class AuthController extends Controller
             'apellido1'      => $data['apellido1'], 
             'apellido2'      => $data['apellido2'], 
             'nif'            => $data['nif'],
-            'es_empresa'     => $data['es_empresa'],
+            'rol'            => $data['rol'],
             'razon_social'   => $data['razon_social'],
             'cif'            => $data['cif'],
             'direccion'      => $data['direccion'],
