@@ -7,13 +7,13 @@
 
     <title>beHABITAT-backend-@yield('titulo')</title>
 
-    @include('layouts.estilos')
+    @include('layouts.admin.estilos')
 </head>
 <body id="app-layout">
-    @include('layouts.nav')
+    @include('layouts.admin.nav')
 
     @yield('contenido')
 
-    @include('layouts.scripts')
+    @include('layouts.admin.scripts')
 </body>
 </html>

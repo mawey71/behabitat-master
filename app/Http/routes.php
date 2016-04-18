@@ -27,8 +27,44 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
 
+    // Route::get('/', [
+    //     'as'   => 'home',
+    //     'uses' => 'PagesController@home'
+    // ]);
+
+    // Route::get('/about', [
+    //     'as'   => 'about',
+    //     'uses' => 'PagesController@about'
+    // ]);
+
+
+/*
+    
+    Route::get('/contacto', function() {
+		return redirect('/#contacto');
+	});
+*/
+ //    Route::get('/', [
+ //        'as'   => 'home',
+ //        'uses' => 'PagesController@home'
+ //    ]);
+
+ //    Route::get('/about', [
+ //        'as'   => 'about',
+ //        'uses' => 'PagesController@about'
+ //    ]);
+
+	// Route::get('/contacto', [
+ //    	'as'   => 'contacto',
+ //        'uses' => 'EmailController@mostrarForm'
+ //    ]);
+
+ //    Route::post('/contacto', 'EmailController@enviarEmail');
+
+
+
+Route::group(['middleware' => ['web']], function () {
     Route::get('/', [
         'as'   => 'home',
         'uses' => 'PagesController@home'
@@ -39,26 +75,31 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'PagesController@about'
     ]);
 
-
-/*
-    
-    Route::get('/contacto', function() {
-		return redirect('/#contacto');
-	});
-*/
-	Route::get('/contacto', [
-    	'as'   => 'contacto',
+    Route::get('/contacto', [
+        'as'   => 'contacto',
         'uses' => 'EmailController@mostrarForm'
     ]);
+
     Route::post('/contacto', 'EmailController@enviarEmail');
 
+    //Route::auth();
+    Route::get('login', 'Auth\AuthController@showLoginForm');
+    Route::post('login', 'Auth\AuthController@login');
+    Route::get('logout', 'Auth\AuthController@logout');
 
-});
+    // Registration Routes...
+    Route::get('register', 'Auth\AuthController@showRegistrationForm');
+    Route::post('register', 'Auth\AuthController@register');
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+    // Password Reset Routes...
+    Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+    Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+    Route::post('password/reset', 'Auth\PasswordController@reset');
 
     Route::get('/home', 'PagesController@home');
+});
+
+Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/admin/home', [
         'as' => 'admin.home', 
         'uses' => 'AdminController@home']);

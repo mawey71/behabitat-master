@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.admin.app')
 
 @section('titulo', 'Administración')
 
@@ -11,7 +11,7 @@
                 <div class="panel-heading">Panel de administración</div>
 
                 <div class="panel-body">
-                    Estás dentro! {{ Auth::user()->username }}
+                    Estás dentro! 
                 </div>
             </div>
         </div>
