@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @extends('layouts.master')
-=======
-@extends('layouts.admin.app')
->>>>>>> dev
 
 @section('titulo', 'Administración')
 
@@ -21,4 +17,4 @@
         </div>
     </div>
 </div>
-@endsection
+@stop
