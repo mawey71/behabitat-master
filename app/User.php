@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'es_admin', 'nombre', 'apellido1', 'apellido2', 'rol', 'razon_social', 'cif', 'direccion', 'localidad', 'provincia', 'codigo_postal', 'telefono', 'telefono_movil'
+        'username', 'email', 'password'
     ];
 
     /**
@@ -24,8 +24,15 @@ class User extends Authenticatable
         'password', 'remember_token', 'es_admin'
     ];
 
-    public function activities()
-    {
-        return $this->belongsToMany('App\Activity');
+    public function particular() {
+        return $this->hasOne('App\Particular');
     }
+
+    public function company() {
+        return $this->hasOne('App\Company');
+    }
+    // public function activities()
+    // {
+    //     return $this->belongsToMany('App\Activity');
+    // }
 }

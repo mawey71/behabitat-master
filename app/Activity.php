@@ -8,8 +8,8 @@ class Activity extends Model
 {
 	protected $fillable = ['nombre', 'descripcion'];
 
-    public function users()
+    public function companies()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\Company');
     }
 }

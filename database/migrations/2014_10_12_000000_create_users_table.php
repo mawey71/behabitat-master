@@ -18,20 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->boolean('es_admin')->default(false);
-            $table->string('nombre');
-            $table->string('apellido1');
-            $table->string('apellido2')->nullable();
             $table->enum('rol', ['cliente', 'proveedor'])->default('cliente');
-            $table->string('nif')->nullable();
-            $table->string('razon_social')->nullable();
-            $table->string('cif')->nullable();
-            $table->string('direccion');
-            $table->string('localidad');
-            $table->string('provincia');
-            $table->string('codigo_postal');
-            $table->string('telefono')->nullable();
-            $table->string('telefono_movil')->nullable();
-
+            
             $table->rememberToken();
             $table->timestamps();
         });

@@ -25,19 +25,10 @@ class UsersTableSeeder extends Seeder
             'username'       => 'mawey71',
             'email'          => 'neoproyecto@gmail.com',
             'password'       => bcrypt('r1c4r'),
-            'es_admin'       => true,
-            'nombre'         => 'Ricardo',
-            'apellido1'      => 'Mejias', 
-            'apellido2'      => 'Rodriguez',
-            'nif'            => '07235894W',
-            'direccion'      => 'Calle Jabato, 42',
-            'localidad'      => 'Rivas-Vaciamadrid',
-            'provincia'      => 'Madrid',
-            'codigo_postal'  => '28521',
-            'telefono'       => '914995841',
-            'telefono_movil' => '606511286'
-
         ]);
+        $yo = App\User::find(1);
+        $yo->es_admin=true;
+        $yo->save();
 
         factory(App\User::class, 29)->create([
         	'remember_token' => NULL

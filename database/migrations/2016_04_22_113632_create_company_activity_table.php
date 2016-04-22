@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActivityUserTable extends Migration
+class CreateCompanyActivityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,15 @@ class CreateActivityUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('activity_user', function (Blueprint $table) {
+        Schema::create('company_activity', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('company_id')->unsigned();
             $table->integer('activity_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->timestamps();
 
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('activity_id')->references('id')->on('activities');
-            $table->foreign('user_id')->references('id')->on('users');
-            //->onDelete('cascade'); en ambas tablas --> lo haré por código
+
+            $table->timestamps();
         });
     }
 
@@ -31,6 +31,6 @@ class CreateActivityUserTable extends Migration
      */
     public function down()
     {
-        Schema::drop('activity_user');
+        Schema::drop('company_activity');
     }
 }
