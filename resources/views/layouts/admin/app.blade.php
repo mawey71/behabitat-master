@@ -14,6 +14,8 @@
 
     @yield('contenido')
 
+	@include('layouts.partials.footer')
+    
     @include('layouts.admin.scripts')
 </body>
 </html>

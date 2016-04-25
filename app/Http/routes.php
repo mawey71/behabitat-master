@@ -99,8 +99,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/home', 'PagesController@home');
 });
 
-Route::group(['middleware' => ['web', 'auth']], function () {
-    Route::get('/admin/home', [
+Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin'], function () {
+    Route::get('home', [
         'as' => 'admin.home', 
         'uses' => 'AdminController@home']);
+    Route::resource('activity', 'ActivityController');
 });
