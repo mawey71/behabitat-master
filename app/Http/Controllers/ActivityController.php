@@ -11,33 +11,20 @@ use App\Activity;
 
 class ActivityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Lista las actividades
     public function index()
     {
-        $actividades = Activity::orderBy('id', 'ASC')->paginate(10);
+        $actividades = Activity::orderBy('id', 'ASC')->paginate(env('ITEMS_PAGINACION', 5));
         return view('admin.activity.index')->with('actividades', $actividades);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Muestra el formulario de creación
     public function create()
     {
         return view('admin.activity.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // Almacena el formulario de creación
     public function store(ActivityRequest $request)
     {
         $actividad = new Activity($request->all());
