@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -27,5 +28,9 @@ class PagesController extends Controller
     public function about()
     {
     	return view('about');
+    }
+
+    public function perfil() {
+        return 'PERFIL de ' . Auth::user()->username;
     }
 }

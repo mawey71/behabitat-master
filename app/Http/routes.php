@@ -99,7 +99,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/home', 'PagesController@home');
 });
 
-Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('perfil', [
+        'as' => 'perfil', 
+        'uses' => 'PagesController@perfil']);
+});
+
+Route::group(['middleware' => ['web', 'auth', 'admin'], 'prefix' => 'admin'], function () {
     Route::get('home', [
         'as' => 'admin.home', 
         'uses' => 'AdminController@home']);

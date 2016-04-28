@@ -35,4 +35,8 @@ class User extends Authenticatable
     // {
     //     return $this->belongsToMany('App\Activity');
     // }
+
+    public function isAdmin() {
+        return $this->es_admin;
+    }
 }
