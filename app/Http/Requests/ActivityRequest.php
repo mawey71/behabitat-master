@@ -24,8 +24,8 @@ class ActivityRequest extends Request
     public function rules()
     {
         return [
-            'nombre' => 'required',
-            'descripcion'  => 'required',
+            'nombre'      => 'required|unique:activities,nombre',
+            'descripcion' => 'required',
         ];
     }
 }

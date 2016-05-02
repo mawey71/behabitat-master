@@ -24,57 +24,53 @@ class ActivityController extends Controller
         return view('admin.activity.create');
     }
 
-    // Almacena el formulario de creación
+    // Almacena el modelo
     public function store(ActivityRequest $request)
     {
         $actividad = new Activity($request->all());
-        $actividad->save();
+        $actividad->save(); 
+        // Las dos líneas anteriores se pueden combinar en una sola: 
+        // $actividad = Activity::create($request->all()); 
+        // o también, con el método fill():
+        // $actividad = new Activity();
+        // $actividad->fill($request->all());
+        // $actividad->save();
         flash()->success('actividad creada correctamente');
         return redirect()->route('admin.activity.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Muestra el modelo referenciado
     public function show($id)
     {
         echo 'Activity -> show ' . $id;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Muestra el formulario de edición
     public function edit($id)
     {
-        echo 'Activity -> edit ' . $id;
+        $actividad = Activity::findBySlugOrIdOrFail($id);
+
+        return view('admin.activity.edit', compact('actividad'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    // Actualiza el modelo
+    public function update(ActivityRequest $request, $id)
     {
-        echo 'Activity -> update ' . $request . ' ' . $id;
+        $actividad = Activity::findBySlugOrIdOrFail($id);
+        $actividad->fill($request->all());
+        $actividad->save();
+
+        flash()->success('actividad actualizada correctamente');
+        return redirect()->route('admin.activity.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Borra el modelo
     public function destroy($id)
     {
-        echo 'Activity -> destroy ' . $id;
+        $actividad = Activity::findOrFail($id);
+        $actividad->delete();
+        
+        flash()->success('actividad eliminada correctamente');
+        return redirect()->route('admin.activity.index');
     }
 }

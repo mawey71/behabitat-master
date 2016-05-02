@@ -13,9 +13,17 @@ class Activity extends Model implements SluggableInterface
 	protected $sluggable = [
         'build_from' => 'nombre',
         'save_to'    => 'slug',
+        'unique'     => 'true',
+        'on_update'  => 'true'
     ];
+
 	protected $fillable = ['nombre', 'descripcion'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    
     public function companies()
     {
         return $this->belongsToMany('App\Company');

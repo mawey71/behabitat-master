@@ -5,7 +5,7 @@
 @section('contenido')
 <div class="container">
     <div class="row">
-        <hr >
+        <hr />
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -13,7 +13,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Lista de Actividades</div>
                 <div class="panel-body">
-                <a href="{{ route('admin.activity.create') }}" class="btn btn-primary btn-crear">Crear Nueva Actividad</a>
+                    <a href="{{ route('admin.activity.create') }}" class="btn btn-primary btn-crear">Crear Nueva Actividad</a>
+                    <p>Mostrando <span class="negrita">{{ $actividades->count() }}</span> de <span class="negrita">{{ $actividades->total() }}</span> actividades</p>
                     <table class="table table-striped">
                         <thead>
                            <th>ID</th>
@@ -26,8 +27,9 @@
                                     <td>{{ $actividad->id }}</td>
                                     <td>{{ $actividad->nombre }}</td>
                                     <td>{{ $actividad->descripcion }}</td>
-                                    <td><a href="#" class="btn btn-warning"></a> 
-                                        <a href="#" class="btn btn-danger"></a>
+                                    <td>
+                                        <a href="{{ route('admin.activity.edit', $actividad) }}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a> 
+                                        <a href="{{ route('admin.activity.show', $actividad) }}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                                     </td>
                                 </tr>
                             @endforeach
